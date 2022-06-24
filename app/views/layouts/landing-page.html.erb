@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Sample Landing Page with Components - powered by ButterCMS</title>
-    <meta name="description" content="Sample Landing Page with Components - powered by ButterCMS" />
+    <title><%= @page_data.seo.title %></title>
+    <meta name="description" content="<%= @page_data.seo.description %>" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="butter-favicon.png"/>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
@@ -16,22 +16,23 @@
 		as="style" 
 		onload="this.onload=null;this.rel='stylesheet'"
 	  >
-    <!-- No JS fallback for tiny-slider -->
     <noscript><link rel="stylesheet" href="assets/css/tiny-slider.css"></noscript>
   </head>
   <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
+    <%# ===== IE browsehappy warning ===== %>
+    <%= render :partial => 'components/browsehappy' %>
+    <%# ===== preloader ===== %>
+    <%= render :partial => 'components/preloader' %>
+    <%# ===== header ===== %>
+    <%= render :partial => 'components/header', :locals => { :menu_items => @menu_items } %>
     <%= yield %>
+    <%# ===== footer ===== %>
+    <%= render :partial => 'components/footer' %>
+    <%# ===== scrolltop button ===== %>
+    <%= render :partial => 'components/scrolltop' %>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/polyfill.js"></script>
     <script src="assets/js/main.js"></script>
-    <!-- ================= JS Index HTML only ========================= -->
     <script src="assets/js/tiny-slider.js"></script>
     <script src="assets/js/client-slider.js"></script>
     <script src="assets/js/section-menu.js"></script>
