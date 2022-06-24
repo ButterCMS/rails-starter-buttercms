@@ -25,7 +25,10 @@
     <%= render :partial => 'components/preloader' %>
     <%# ===== header ===== %>
     <%= render :partial => 'components/header', :locals => { :menu_items => @menu_items } %>
+    <%# ===== butterCMS components ===== %>
     <%= yield %>
+    <%# ===== latest blog posts ===== %>
+    <%= render :partial => "components/latest_blog_posts", :locals => { :posts => @latest_blog_posts } %>
     <%# ===== footer ===== %>
     <%= render :partial => 'components/footer' %>
     <%# ===== scrolltop button ===== %>
