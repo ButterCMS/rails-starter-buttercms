@@ -10,13 +10,6 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/lineicons.css"/>
     <link rel="stylesheet" href="assets/css/main.css"/>
-    <link 
-		rel="preload" 
-		href="assets/css/tiny-slider.css" 
-		as="style" 
-		onload="this.onload=null;this.rel='stylesheet'"
-	  >
-    <noscript><link rel="stylesheet" href="assets/css/tiny-slider.css"></noscript>
   </head>
   <body>
     <%# ===== IE browsehappy warning ===== %>
@@ -25,10 +18,8 @@
     <%= render :partial => 'components/preloader' %>
     <%# ===== header ===== %>
     <%= render :partial => 'components/header', :locals => { :menu_items => @menu_items } %>
-    <%# ===== butterCMS components ===== %>
+    <%# ===== blog content ===== %>
     <%= yield %>
-    <%# ===== latest blog posts ===== %>
-    <%= render :partial => "components/latest_blog_posts", :locals => { :posts => @latest_blog_posts } %>
     <%# ===== footer ===== %>
     <%= render :partial => 'components/footer', :locals => { :menu_items => @menu_items } %>
     <%# ===== scrolltop button ===== %>
@@ -36,8 +27,5 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/polyfill.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/tiny-slider.js"></script>
-    <script src="assets/js/client-slider.js"></script>
-    <script src="assets/js/section-menu.js"></script>
   </body>
 </html>

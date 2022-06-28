@@ -17,7 +17,7 @@
                 <ul id="nav" class="navbar-nav ms-auto">
                   <% menu_items.each do |item| %>
                     <li class="nav-item">
-                      <a class="page-scroll active" href="<%= item.url %>"><%= item.label %></a>
+                      <a class="page-scroll" href="<%= "/#{item.url}" %>"><%= item.label %></a>
                     </li>
                   <% end %>
                 </ul>

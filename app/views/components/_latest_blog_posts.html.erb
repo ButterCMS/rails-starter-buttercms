@@ -9,7 +9,7 @@
           </p>
           <p>
             <a 
-							href="blog.html" 
+							href="<%= blog_index_path %>" 
 							class="main-btn btn-hover mt-5">View All Blog Posts
             </a>
           </p>
@@ -31,11 +31,11 @@
               </div>
             <% end %>
             <div class="blog-body">
-              <h5 class="package-name"><a href="#"><%= post.title %></a></h5>
+              <h5 class="package-name"><a href="<%= blog_path(post.slug) %>"><%= post.title %></a></h5>
               <p><%= post.summary %></p>
             </div>
             <div class="blog-footer">
-              <a href="#0" class="main-btn btn-hover">Read More</a>
+              <a href="<%= blog_path(post.slug) %>" class="main-btn btn-hover">Read More</a>
             </div>
           </div>
         </div>

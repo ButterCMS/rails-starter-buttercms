@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include InitButterCMS
+  include ButtercmsHelper
   include Rescuable
 
   before_action :check_token

@@ -21,12 +21,11 @@
         <div class="footer-widget">
           <h3>About Us</h3>
           <ul class="links">
-            <li><a class="page-scroll active" href="#home">Home</a></li>
-            <li><a class="page-scroll" href="#about">About</a></li>
-            <li><a class="page-scroll" href="#features">Features</a></li>
-            <li><a class="page-scroll" href="#tryit">Try It</a></li>
-            <li><a class="page-scroll" href="#testimonials">Testimonials</a></li>
-            <li><a class="page-scroll" href="#blog">Blog</a></li>
+            <% menu_items.each do |item| %>
+              <li class="nav-item">
+                <a class="page-scroll" href="<%= "/#{item.url}" %>"><%= item.label %></a>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>

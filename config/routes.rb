@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
   resources :blog, only: %w[index show] do
     collection do
-      resources :category, only: :show
-      resources :tag, only: :show
+      resources :category, only: :show, to: 'blog#category'
+      resources :tag, only: :show, to: 'blog#tag'
       get 'search', to: 'blog#search'
     end
   end
