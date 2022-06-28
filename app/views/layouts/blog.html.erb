@@ -6,10 +6,10 @@
     <title><%= @page_data.seo.title %></title>
     <meta name="description" content="<%= @page_data.seo.description %>" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="butter-favicon.png"/>
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/lineicons.css"/>
-    <link rel="stylesheet" href="assets/css/main.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/butter-favicon.png"/>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/lineicons.css"/>
+    <link rel="stylesheet" href="/assets/css/main.css"/>
   </head>
   <body>
     <%# ===== IE browsehappy warning ===== %>
@@ -24,8 +24,8 @@
     <%= render :partial => 'components/footer', :locals => { :menu_items => @menu_items } %>
     <%# ===== scrolltop button ===== %>
     <%= render :partial => 'components/scrolltop' %>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/polyfill.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/polyfill.js"></script>
+    <script src="/assets/js/main.js"></script>
   </body>
 </html>

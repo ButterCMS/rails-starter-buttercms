@@ -3,10 +3,11 @@
     <div class="row justify-content-center">
       <div class="col-12">
         <div class="section-title text-center">
-          <h2>All Blog Posts</h2>
+          <h2><%= @page_data.breadcrumbs.title %></h2>
           <ul class="breadcrumb-nav">
-            <li><a href="<%= root_path %>">Home</a></li>
-            <li>All blog posts</li>
+            <% @page_data.breadcrumbs.crumbs.each do |c| %>
+              <li><a href="<%= c.url.present? ? c.url : "javascript:void(0)" %>"><%= c.title %></a></li>
+            <% end %>
           </ul>
         </div>
       </div>
