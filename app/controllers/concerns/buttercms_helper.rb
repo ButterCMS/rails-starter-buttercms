@@ -19,11 +19,16 @@ module ButtercmsHelper
 
   def butter_posts(options = {})
     options = options.merge({ "preview": 1 }) if preview?
+
     ButterCMS::Post.all(options)
   end
 
   def butter_categories(options = {})
     ButterCMS::Category.all(options)
+  end
+
+  def butter_tags(options = {})
+    ButterCMS::Tag.all(options)
   end
 
   private

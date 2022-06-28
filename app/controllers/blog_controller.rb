@@ -24,10 +24,28 @@ class BlogController < ApplicationController
     render 'blog/index'
   end
 
+  def tag
+    @posts = butter_posts({ "tag_slug": params[:id] })
+    tags
+    @tag = @tags.find { |tag| tag.slug == params[:id] }
+    @page_data = OpenStruct.new(seo: OpenStruct.new(title: "Sample Blog - tag: #{@tag.name}",
+                                                    description: "Sample blog powered by ButterCMS, showing tag: #{@tag.name}."),
+                                breadcrumbs: breadcrumbs(title: 'Blog Posts by Tag', crumbs: [
+                                                           { title: 'Home', url: root_path },
+                                                           { title: 'Blog', url: blog_index_path },
+                                                           { title: "Tag: #{@tag.name}", url: nil }
+                                                         ]))
+    render 'blog/index'
+  end
+
   private
 
   def categories
     @categories ||= butter_categories
+  end
+
+  def tags
+    @tags ||= butter_tags
   end
 
   def menu_items

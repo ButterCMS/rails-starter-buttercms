@@ -5,7 +5,7 @@ class PagesController < ApplicationController
 
     @menu_items = butter_collection('navigation_menu_item')
     @page_data = butter_page(page_type, slug)
-    @latest_blog_posts = butter_posts({ page_limit: 2 })
+    @latest_blog_posts = butter_posts({ page_size: 2 })
 
     render layout: page_type.to_s
   end
