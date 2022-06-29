@@ -7,6 +7,7 @@
     <meta name="description" content="<%= @page_data.seo.description %>" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="/butter-favicon.png"/>
+    <meta property="og:image" content="<%= @page_data.seo.featured_image.present? ? @page_data.seo.featured_image : '/assets/images/blog/blog-thumbnail.png' %>">
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/assets/css/lineicons.css"/>
     <link rel="stylesheet" href="/assets/css/main.css"/>

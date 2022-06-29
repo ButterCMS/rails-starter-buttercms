@@ -23,6 +23,12 @@ module ButtercmsHelper
     ButterCMS::Post.all(options)
   end
 
+  def butter_post(slug, options = {})
+    options = options.merge({ "preview": 1 }) if preview?
+
+    ButterCMS::Post.find(slug, options)
+  end
+
   def butter_categories(options = {})
     ButterCMS::Category.all(options)
   end

@@ -1,4 +1,4 @@
-<section id="blog-roll" class="blog-roll-nav">
+<section id="blog-header" class="single-post-nav">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12">
@@ -9,13 +9,14 @@
     </div>
   </div>
 </section>
-<section class="blog-posts">
+<!-- Blog Post -->
+<section class="blog-post">
   <div class="container">
     <div class="row justify-content-center">
-      <!-- Blog Posts -->
-      <%= render partial: 'blog_roll_cards', locals: { posts: @posts } %>
-      <!-- Widgets Column -->
-      <aside class="col-12 col-lg-4">
+      <div class="col-lg-8 col-md-12 col-12">
+        <%= render partial: 'single_post', locals: { post: @post } %>
+      </div>
+      <aside class="col-lg-4 col-md-12 col-12">
         <%= render partial: 'search_widget' %>
         <%= render partial: 'categories_widget', locals: { categories: @categories } %>
       </aside>

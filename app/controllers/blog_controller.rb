@@ -50,6 +50,18 @@ class BlogController < ApplicationController
     render 'blog/index'
   end
 
+  def show
+    @post = butter_post(params[:id])
+    @page_data = OpenStruct.new(seo: OpenStruct.new(title: @post.seo_title,
+                                                    description: @post.meta_description,
+                                                    featured_image: @post.featured_image),
+                                breadcrumbs: breadcrumbs(title: @post.title, crumbs: [
+                                                           { title: 'Home', url: root_path },
+                                                           { title: 'Blog', url: blog_index_path },
+                                                           { title: @post.title, url: nil }
+                                                         ]))
+  end
+
   private
 
   def categories

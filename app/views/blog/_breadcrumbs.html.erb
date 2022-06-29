@@ -1,0 +1,6 @@
+<h2><%= breadcrumbs.title %></h2>
+<ul class="breadcrumb-nav">
+  <% breadcrumbs.crumbs.each do |c| %>
+    <li><a href="<%= c.url.present? ? c.url : "javascript:void(0)" %>"><%= c.title %></a></li>
+  <% end %>
+</ul>
