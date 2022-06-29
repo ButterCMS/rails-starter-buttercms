@@ -31,7 +31,15 @@ module ButtercmsHelper
     ButterCMS::Tag.all(options)
   end
 
+  def butter_search(options = {})
+    ButterCMS::Post.search(query_string, options)
+  end
+
   private
+
+  def query_string
+    params[:q]
+  end
 
   def preview?
     return true if params[:preview].to_i == 1

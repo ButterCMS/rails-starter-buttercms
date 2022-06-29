@@ -38,6 +38,18 @@ class BlogController < ApplicationController
     render 'blog/index'
   end
 
+  def search
+    @posts = butter_search
+    @page_data = OpenStruct.new(seo: OpenStruct.new(title: "Sample Blog - search results for #{params[:q]}",
+                                                    description: "Sample blog powered by ButterCMS, showing search results for query: \"#{params[:q]}\""),
+                                breadcrumbs: breadcrumbs(title: 'Search Results', crumbs: [
+                                                           { title: 'Home', url: root_path },
+                                                           { title: 'Blog', url: blog_index_path },
+                                                           { title: "Search: #{params[:q]}", url: nil }
+                                                         ]))
+    render 'blog/index'
+  end
+
   private
 
   def categories

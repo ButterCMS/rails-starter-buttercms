@@ -1,0 +1,11 @@
+<div class="col-12 col-lg-8 blog-roll-cards">
+  <div class="row"><!--nested row for blogroll-->
+    <% if posts.items.blank? %>
+      <h3>No blog posts found matching this query.</h3>
+    <% else %>
+      <% posts.each do |post| %>
+        <%= render partial: 'blog/single_post_card', locals: { post: post } %>
+      <% end %>
+    <% end%>
+  </div>
+</div>
