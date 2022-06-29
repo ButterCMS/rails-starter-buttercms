@@ -1,30 +1,34 @@
-<div class="single-post">
-  <div class="single-post-meta">
-    <h2 class="single-post-header"><%= post.title %></h2>
-    <ul class="single-post-meta-info">
-      <li>
-        <a href="javascript:void(0)">
-          <img src="<%= post.author.profile_image.present? ? post.author.profile_image : "assets/images/team/team-1.png" %>"
-                                                  alt="#"><%= post.author.first_name + " " + post.author.last_name %>
-        </a>
-      </li>
-      <li>
-        <a href="javascript:void(0)"><i class="lni lni-calendar"></i> <%= DateTime.parse(post.published).strftime("%d %b %Y") %>
-        </a>
-      </li>
-      <% post.tags.each do |tag| %>
+<% if post.present? %>
+  <div class="single-post">
+    <div class="single-post-meta">
+      <h2 class="single-post-header"><%= post.title %></h2>
+      <ul class="single-post-meta-info">
         <li>
-          <a href="<%= tag_path(tag.slug) %>"><i class="lni lni-tag"></i> <%= tag.name %></a>
+          <a href="javascript:void(0)">
+            <img src="<%= post.author.profile_image.present? ? post.author.profile_image : "assets/images/team/team-1.png" %>"
+                                                  alt="#"><%= post.author.first_name + " " + post.author.last_name %>
+          </a>
         </li>
-      <% end %>
-    </ul>
-  </div>
-  <% if post.featured_image.present? %>
-    <div class="single-post-thumbnail">
-      <img src="<%= post.featured_image %>" alt="">
+        <li>
+          <a href="javascript:void(0)"><i class="lni lni-calendar"></i> <%= DateTime.parse(post.published).strftime("%d %b %Y") %>
+          </a>
+        </li>
+        <% post.tags.each do |tag| %>
+          <li>
+            <a href="<%= tag_path(tag.slug) %>"><i class="lni lni-tag"></i> <%= tag.name %></a>
+          </li>
+        <% end %>
+      </ul>
     </div>
-  <% end %>
-  <div class="single-post-body">
-    <%= post.body.html_safe %>
+    <% if post.featured_image.present? %>
+      <div class="single-post-thumbnail">
+        <img src="<%= post.featured_image %>" alt="">
+      </div>
+    <% end %>
+    <div class="single-post-body">
+      <%= post.body.html_safe %>
+    </div>
   </div>
-</div>
+<% else %>
+  <h2>Blog Post Not Found</h2>
+<% end %>
