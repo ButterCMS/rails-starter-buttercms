@@ -4,7 +4,7 @@
       <h2 class="blog-roll-card-header"><a href="<%= blog_path(post.slug) %>"><%= post.title %></a></h2>
       <ul class="blog-roll-card-meta-info">
         <li>
-          <a href="javascript:void(0)"><img src="<%= post.author.profile_image.present? ? post.author.profile_image : "assets/images/team/team-1.png" %>" alt="#"><%= post.author.first_name + " " + post.author.last_name %></a>
+          <a href="javascript:void(0)"><img src="<%= post.author.profile_image.present? ? post.author.profile_image : "/assets/images/team/team-1.png" %>" alt="#"><%= post.author.first_name + " " + post.author.last_name %></a>
         </li>
         <li>
           <a href="javascript:void(0)"><i class="lni lni-calendar"></i> <%= DateTime.parse(post.published).strftime("%d %b %Y") %>
