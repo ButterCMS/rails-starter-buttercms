@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   end
 
   get '/:page_type/:slug/', to: 'pages#index'
+
+  # No route matched
+  get '/*a', to: 'pages#not_found'
 end

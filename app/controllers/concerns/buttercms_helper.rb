@@ -1,14 +1,10 @@
-require 'buttercms-ruby'
-
 module ButtercmsHelper
   extend ActiveSupport::Concern
   included do
     before_action :check_token
 
-    rescue_from ApiKeyNotSetError do |_exception|
-      @page_data = OpenStruct.new(seo: OpenStruct.new(title: 'Please Set Your Butter Token',
-                                                      description: ''))
-      render 'pages/missing_token'
+    rescue_from ApiKeyNotSetError do
+      render 'pages/missing_token', layout: false
     end
 
     rescue_from ButterCmsPostNotFoundError do |e|
@@ -19,33 +15,34 @@ module ButtercmsHelper
                                                              { title: 'Blog', url: blog_index_path },
                                                              { title: 'Not found', url: nil }
                                                            ]))
-      logger.info e.message.to_s
+      logger.warn e.message.to_s
       render 'blog/show'
     end
 
-    rescue_from ButterCmsPageNotFoundError do |e|
-      @page_data = OpenStruct.new(seo: OpenStruct.new(title: 'Not found',
-                                                      description: ''))
-      logger.info e.message.to_s
-      render 'pages/404', layout: 'application'
+    rescue_from ButterCmsResourceNotFoundError do |e|
+      logger.warn e.to_s
+      render 'pages/404', layout: false
     end
 
-    rescue_from ButterCMS::NotFound do
-      @page_data = OpenStruct.new(seo: OpenStruct.new(title: 'Not found',
-                                                      description: ''))
-      logger.info 'ERROR: a crucial resource that is part of the template was not found in Butter CMS API. Maybe a missing collection.'
-      render 'pages/500', layout: 'application'
+    rescue_from ButterCMS::Error do |e|
+      if e.message == 'Invalid token.'
+        logger.warn 'Your Butter token is set to an invalid value. Please verify your token is correct.'
+      end
+      render 'pages/404', layout: false
     end
   end
 
   def butter_collection(collection_name, options = {})
     ButterCMS::Content.list(collection_name.to_s, merge_preview(options)).first.data[1]
+  rescue ButterCMS::NotFound
+    raise ButterCmsResourceNotFoundError, "Collection: #{collection_name} was not found in Butter CMS API"
   end
 
   def butter_page(page_type, slug, options = {})
     ButterCMS::Page.get(page_type.to_s, slug.to_s, merge_preview(options)).data.fields
   rescue ButterCMS::NotFound
-    raise ButterCmsPageNotFoundError
+    raise ButterCmsResourceNotFoundError,
+          "Page with page type: #{page_type} and slug: #{slug} was not found in Butter CMS API"
   end
 
   def butter_posts(options = {})

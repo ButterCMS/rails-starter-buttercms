@@ -12,8 +12,10 @@ class BlogController < ApplicationController
   end
 
   def category
-    @posts = butter_posts({ "category_slug": params[:id] })
     @category = @categories.find { |cat| cat.slug == params[:id] }
+    raise ButterCmsResourceNotFoundError, "Category #{params[:id]} was not found in Butter CMS API" if @category.blank?
+
+    @posts = butter_posts({ "category_slug": params[:id] })
     @page_data = OpenStruct.new(seo: OpenStruct.new(title: "Sample Blog - category: #{@category.name}",
                                                     description: "Sample blog powered by ButterCMS, showing category: #{@category.name}."),
                                 breadcrumbs: breadcrumbs(title: 'Blog Posts By Category', crumbs: [
@@ -25,9 +27,11 @@ class BlogController < ApplicationController
   end
 
   def tag
-    @posts = butter_posts({ "tag_slug": params[:id] })
-    tags
+    @tags = butter_tags
     @tag = @tags.find { |tag| tag.slug == params[:id] }
+    raise ButterCmsResourceNotFoundError, "Tag #{params[:id]} was not found in Butter CMS API" if @tag.blank?
+
+    @posts = butter_posts({ "tag_slug": params[:id] })
     @page_data = OpenStruct.new(seo: OpenStruct.new(title: "Sample Blog - tag: #{@tag.name}",
                                                     description: "Sample blog powered by ButterCMS, showing tag: #{@tag.name}."),
                                 breadcrumbs: breadcrumbs(title: 'Blog Posts by Tag', crumbs: [
@@ -66,10 +70,6 @@ class BlogController < ApplicationController
 
   def categories
     @categories ||= butter_categories
-  end
-
-  def tags
-    @tags ||= butter_tags
   end
 
   def menu_items

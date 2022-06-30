@@ -1,0 +1,2 @@
+class ButterCmsResourceNotFoundError < StandardError
+end

@@ -9,4 +9,8 @@ class PagesController < ApplicationController
 
     render layout: page_type.to_s
   end
+
+  def not_found
+    render '404', layout: false
+  end
 end

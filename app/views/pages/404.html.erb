@@ -1,52 +1,73 @@
-<%# ========================= preloader start ========================= %>
-<div class="preloader">
-  <div class="loader">
-    <div class="spinner">
-      <div class="spinner-container">
-        <div class="spinner-rotator">
-          <div class="spinner-left">
-            <div class="spinner-circle"></div>
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Page not found</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="/butter-favicon.png"/>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/lineicons.css"/>
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+  </head>
+  <body>
+    <%# ===== IE browsehappy warning ===== %>
+    <%= render :partial => 'components/browsehappy' %>
+    <%# ========================= preloader start ========================= %>
+    <div class="preloader">
+      <div class="loader">
+        <div class="spinner">
+          <div class="spinner-container">
+            <div class="spinner-rotator">
+              <div class="spinner-left">
+                <div class="spinner-circle"></div>
+              </div>
+              <div class="spinner-right">
+                <div class="spinner-circle"></div>
+              </div>
+            </div>
           </div>
-          <div class="spinner-right">
-            <div class="spinner-circle"></div>
+        </div>
+      </div>
+    </div>
+    <%# preloader end %>
+    <%# ========================= header start ========================= %>
+    <header class="header">
+      <div class="navbar-area">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="https://buttercms.com">
+                  <img src="https://cdn.buttercms.com/PBral0NQGmmFzV0uG7Q6" alt="Logo" />
+                </a>
+              </nav>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-<%# preloader end %>
-<%# ========================= header start ========================= %>
-<header class="header">
-  <div class="navbar-area">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-12">
-          <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="https://buttercms.com">
-              <img src="https://cdn.buttercms.com/PBral0NQGmmFzV0uG7Q6" alt="Logo" />
-            </a>
-          </nav>
+    </header>
+    <%# ========================= header end ========================= %>
+    <%# ========================= hero no API token ========================= %>
+    <section id="home" class="hero-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-xl-6 col-lg-6 col-md-10">
+            <div class="hero-content">
+              <h1>404: Page Not Found</h1>
+            </div>
+          </div>
+          <div class="col-xxl-6 col-xl-6 col-lg-6">
+            <img width="300" src="https://cdn.buttercms.com/9bPtzdJ6QSWkySNjlmyR" alt="">
+            <div class="hero-image text-center text-lg-end"></div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</header>
-<%# ========================= header end ========================= %>
-<%# ========================= hero no API token ========================= %>
-<section id="home" class="hero-section">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-xl-6 col-lg-6 col-md-10">
-        <div class="hero-content">
-          <h1>Page Not Found</h1>
-        </div>
-      </div>
-      <div class="col-xxl-6 col-xl-6 col-lg-6">
-        <img width="300" src="https://cdn.buttercms.com/9bPtzdJ6QSWkySNjlmyR" alt="">
-        <div class="hero-image text-center text-lg-end"></div>
-      </div>
-    </div>
-  </div>
-</section>
-<%# ========================= hero-section end ========================= %>
+    </section>
+    <%# ========================= hero-section end ========================= %>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/polyfill.js"></script>
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>
