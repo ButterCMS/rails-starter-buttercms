@@ -6,8 +6,8 @@ module ButtercmsHelper
     before_action :set_token
   end
 
-  def butter_collection(collection_name, options = {})
-    ButterCMS::Content.list(collection_name.to_s, merge_preview(options)).first.data[1]
+  def butter_collection(collection_names_array, options = {})
+    ButterCMS::Content.fetch(collection_names_array, merge_preview(options))
   rescue ButterCMS::NotFound
     raise ButterCmsError::ResourceNotFound, "Collection: \"#{collection_name}\" was not found in Butter CMS API"
   end

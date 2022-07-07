@@ -73,6 +73,6 @@ class BlogController < ApplicationController
   end
 
   def menu_items
-    @menu_items ||= butter_collection('navigation_menu_item')
+    @menu_items ||= butter_collection(['navigation_menu_item']).navigation_menu_item
   end
 end
