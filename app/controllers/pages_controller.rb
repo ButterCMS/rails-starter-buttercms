@@ -8,6 +8,9 @@ class PagesController < ApplicationController
     @latest_blog_posts = butter_posts({ page_size: 2 })
 
     render layout: page_type.to_s
+
+  rescue ActionView::Template::Error => e
+    raise ButterCmsError::MissingComponentPartial, e
   end
 
   def not_found
