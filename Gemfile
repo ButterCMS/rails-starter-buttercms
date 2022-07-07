@@ -28,7 +28,7 @@ gem 'stimulus-rails'
 gem 'jbuilder'
 
 # ButterCMS Rails SDK [https://github.com/buttercms/buttercms-ruby]
-gem 'buttercms-ruby'
+gem 'buttercms-ruby', '~> 2.3'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
