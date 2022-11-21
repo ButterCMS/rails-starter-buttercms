@@ -18,7 +18,7 @@ class BlogController < ApplicationController
     @posts = butter_posts({ "category_slug": params[:id] })
     @page_data = OpenStruct.new(seo: OpenStruct.new(title: "Sample Blog - category: #{@category.name}",
                                                     description: "Sample blog powered by ButterCMS, showing category: #{@category.name}."),
-                                breadcrumbs: helpers.breadcrumbs(title: 'Blog Posts By Category', crumbs: [
+                                breadcrumbs: helpers.breadcrumbs(title: 'Blog Posts by Category', crumbs: [
                                                            { title: 'Home', url: root_path },
                                                            { title: 'Blog', url: blog_index_path },
                                                            { title: "Category: #{@category.name}", url: nil }
