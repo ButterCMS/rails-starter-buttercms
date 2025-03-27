@@ -7,15 +7,49 @@ You can view a [live demo hosted on Heroku](https://rails-starter-buttercms.hero
 [![Heroku Deploy Button](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ButterCMS/rails-starter-buttercms/tree/main&env%5BRAILS_BUTTER_CMS_API_KEY%5D=check%20https://buttercms.com/settings)
 
 ## 1. Installation
-Make sure you have ruby version 3.1.0 installed. Otherwise, follow the official [instructions](https://www.ruby-lang.org/en/documentation/installation/) on how to set up ruby on your machine.
-```
-$ ruby -v
+
+### Prerequisites
+
+#### Linux (Ubuntu/Debian)
+```bash
+# Install required packages
+$ sudo apt-get update
+$ sudo apt-get install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-dev
+
+# Install rbenv for Ruby version management
+$ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+$ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+$ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+$ source ~/.bashrc
+
+# Install Ruby 3.2.3
+$ rbenv install 3.2.3
 ```
 
-If you're all set, clone the repo and install dependencies
+#### macOS
+```bash
+# Install Homebrew if not already installed
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install required packages
+$ brew install rbenv ruby-build
+
+# Add rbenv to bash/zsh
+$ echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+$ source ~/.zshrc
+
+# Install Ruby 3.2.3
+$ rbenv install 3.2.3
 ```
+
+### Setup Project
+
+Clone the repo and install dependencies:
+```bash
 $ git clone https://github.com/ButterCMS/rails-starter-buttercms.git
 $ cd rails-starter-buttercms
+$ rbenv local 3.2.3                     # Set Ruby version only for this project
+$ gem install bundler
 $ bundle install
 ```
 
@@ -31,11 +65,11 @@ $ echo 'RAILS_BUTTER_CMS_API_KEY=<Your API Token>' >> .env
 
 To view the app in the browser, you'll need to run the local development server:
 
-```
+```bash
 $ bundle exec rails s
 ```
 
-Congratulations! Your starter project is now live. To view your project, point your browser to [localhost:3000](http://localhost::3000).
+Congratulations! Your starter project is now live. To view your project, point your browser to [localhost:3000](http://localhost:3000).
 
 ## 4. Deploy to Heroku
 
