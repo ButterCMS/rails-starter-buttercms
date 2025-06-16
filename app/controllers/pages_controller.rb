@@ -14,6 +14,6 @@ class PagesController < ApplicationController
   end
 
   def not_found
-    render '404', layout: false
+    render template: 'pages/404', formats: [:html], layout: false
   end
 end
