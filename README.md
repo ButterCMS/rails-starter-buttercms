@@ -42,6 +42,9 @@ $ source ~/.zshrc
 $ rbenv install 3.2.3
 ```
 
+#### Windows
+Follow steps to install ruby version 3.2.3 on your system. You can use a package manager like rbenv.
+
 ### Setup Project
 
 Clone the repo and install dependencies:
