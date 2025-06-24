@@ -9,5 +9,6 @@
       "description": "Use the API key from your ButterCMS account",
       "value": ""
     }
-  }
+  },
+  "stack": "heroku-24"
 }
